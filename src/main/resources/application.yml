@@ -2,7 +2,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-
   graphql:
     graphiql:
       enabled: true
@@ -12,5 +11,12 @@ spring:
     password: example
     url: jdbc:mysql://localhost:3306/basketball
 
+
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
 server:
   port: 8082
+
+
+

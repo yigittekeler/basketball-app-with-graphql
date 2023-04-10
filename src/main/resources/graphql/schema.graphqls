@@ -1,11 +1,15 @@
 type Query {
-    players: [Player]
+    players(page: Int, size: Int): [Player]
 }
 
 type Mutation {
-    addPlayer(playerRequest: PlayerRequest): Player
+    addPlayer(playerRequest : PlayerRequest): Player
+    deletePlayer(id : ID! ) : Player
 }
-
+#type CustomResponseEntity {
+#    responseEntity: String!
+#    statusCode: Int!
+#}
 input PlayerRequest {
     name: String!
     surname: String!
@@ -17,6 +21,7 @@ type Player {
     surname: String!
     position: String!
 }
+
 
 enum Position {
     PG
