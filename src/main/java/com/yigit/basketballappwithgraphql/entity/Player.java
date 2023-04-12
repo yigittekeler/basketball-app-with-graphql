@@ -2,10 +2,9 @@ package com.yigit.basketballappwithgraphql.entity;
 
 import com.yigit.basketballappwithgraphql.enums.Position;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.io.Serializable;
 
 
 @Getter
@@ -13,7 +12,8 @@ import lombok.Setter;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Player {
+@EqualsAndHashCode
+public class Player implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

@@ -9,7 +9,7 @@ spring:
   datasource:
     username: root
     password: example
-    url: jdbc:mysql://localhost:3306/basketball
+    url: jdbc:mysql://localhost:3306/basketball?createDatabaseIfNotExists=true&autoReconnect=true&allowPublicKeyRetrieval=true&useSSL=false
 
 
   mvc:

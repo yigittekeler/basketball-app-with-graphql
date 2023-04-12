@@ -5,11 +5,18 @@ type Query {
 type Mutation {
     addPlayer(playerRequest : PlayerRequest): Player
     deletePlayer(id : ID! ) : Player
+    login(loginRequestDto : LoginRequestDto ) : LoginResponseDto
+
 }
-#type CustomResponseEntity {
-#    responseEntity: String!
-#    statusCode: Int!
-#}
+input LoginRequestDto {
+    username: String!
+    password: String!
+}
+
+type LoginResponseDto {
+    token:String!
+}
+
 input PlayerRequest {
     name: String!
     surname: String!

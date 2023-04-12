@@ -11,14 +11,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.security.Principal;
 import java.time.Instant;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin(origins = "*",maxAge = 3600)
 public class PlayerServiceImpl implements PlayerService {
 
     private final PlayerRepository playerRepository;

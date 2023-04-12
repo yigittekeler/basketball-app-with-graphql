@@ -1,6 +1,7 @@
 package com.yigit.basketballappwithgraphql.service.ımpl;
 
 import com.yigit.basketballappwithgraphql.dto.LoginRequestDto;
+import com.yigit.basketballappwithgraphql.dto.LoginResponseDto;
 import com.yigit.basketballappwithgraphql.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,17 +19,12 @@ public class UserServiceImpl{
 
     private final JwtUtil jwtUtil;
 
-    private final AuthenticationManager authenticationManager;
 
 
-    public String login(LoginRequestDto loginRequestDto) throws Exception {
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequestDto.getUsername(), loginRequestDto.getPassword()));
-        } catch (BadCredentialsException ex) {
-            throw new Exception("Incorret username or password", ex);
-        }
+    public LoginResponseDto login(LoginRequestDto loginRequestDto) throws Exception {
+
         final UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequestDto.getUsername());
 
-        return jwtUtil.generateToken(userDetails);
+        return LoginResponseDto.builder().token(jwtUtil.generateToken(userDetails)).build();
     }
 }
